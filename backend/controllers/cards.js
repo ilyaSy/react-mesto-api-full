@@ -47,9 +47,7 @@ module.exports.createCard = (req, res, next) => {
   const userId = req.user._id;
 
   Card.create({ name, link, owner: userId })
-    .populate('owner')
-    .populate('likes')
-    .then((card) => res.send(card))
+    .then((card) => res.send({...card, owner: req.user}))
     .catch((err) => {
       if (err.errors && err.errors.link) {
         throw new CustomError(400, err.errors.link.message);
