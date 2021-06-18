@@ -22,7 +22,7 @@ export class Auth{
   }
 
   loginUser(userData){
-    return fetch(`${authURL}/signin`, {method: 'POST', headers: this._headers, body: JSON.stringify(userData)})
+    return fetch(`${authURL}/signin`, {method: 'POST', headers: this._headers, credentials: 'include', body: JSON.stringify(userData)})
       .then(res => {
         if (res.ok) {
           return res.json()
