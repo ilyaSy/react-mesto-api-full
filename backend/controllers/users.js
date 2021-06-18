@@ -60,12 +60,12 @@ module.exports.createUser = (req, res, next) => {
         throw new CustomError(500, 'На сервере произошла ошибка');
       }
     }))
-    .then((user) => res.send({
+    .then((user) => res.send({data: {
       name: user.name,
       about: user.about,
       avatar: user.avatar,
       email: user.email,
-    }))
+    }}))
     .catch(next);
 };
 
