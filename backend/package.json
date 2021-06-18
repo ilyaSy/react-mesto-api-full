@@ -8,8 +8,7 @@
     "dev": "nodemon app.js",
     "build": "cd frontend/ && react-scripts build",
     "test": "react-scripts test",
-    "lint": "npx eslint ./backend",
-    "deploy": "npm run build && scp -r ./build/* ilya@178.154.230.87:/home/ilya/frontend"
+    "lint": "npx eslint ./backend"
   },
   "workspaces": [
     "backend/*",

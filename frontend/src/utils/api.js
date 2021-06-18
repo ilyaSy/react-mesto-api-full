@@ -25,7 +25,7 @@ export class Api {
   }
 
   toggleLikeCard(cardId, isLiked) {
-    return fetch(`${this._apiURL}/cards/likes/${cardId}`, {
+    return fetch(`${this._apiURL}/cards/${cardId}/likes`, {
       method: isLiked ? 'DELETE' : 'PUT',
       headers: this._headers,
       credentials: 'include'
