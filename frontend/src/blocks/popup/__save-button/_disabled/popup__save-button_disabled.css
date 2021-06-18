@@ -1,0 +1,7 @@
+.popup__save-button_disabled {
+  background-color: #fff;
+  color: #000;
+  opacity: 0.2;
+  font-size: 18px;
+  line-height: 22px;
+}

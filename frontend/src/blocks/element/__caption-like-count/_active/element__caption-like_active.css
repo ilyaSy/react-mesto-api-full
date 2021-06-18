@@ -1,0 +1,4 @@
+.element__caption-like_active {
+  cursor: pointer;
+  background-image: url('../../../../images/heart_active.svg');
+}

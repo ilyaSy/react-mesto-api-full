@@ -1,0 +1,10 @@
+.element__caption-text {
+  margin: 25px 0 31px 21px;
+  max-width: calc(100% - 21px - 15px - 21px - 8px - 8px); /*8px - отступ между сердечком и границей прямоугольника с текстом, 8px ещё раз - минимальное расстояние между текстом и сердечком*/
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 29px;
+}

@@ -1,0 +1,21 @@
+.popup {
+  position: fixed;
+  content: '';
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, .5);
+  display: flex;
+  visibility: hidden;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity .3s ease-out,visibility .3s ease-out;
+}
+
+/* @media screen and (max-width: 680px) {
+  .popup {
+    padding: 0 19px;
+  }
+} */

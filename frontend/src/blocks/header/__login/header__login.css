@@ -1,0 +1,15 @@
+.header__login {
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
+  line-height: 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media screen and (max-width: 907px) {
+  .header__login {
+    padding-right: 27px;
+  }
+}

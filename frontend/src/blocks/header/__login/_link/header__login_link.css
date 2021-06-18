@@ -1,0 +1,8 @@
+.header__login_link {
+  margin: 0;
+  padding: 0;
+  color: #a9a9a9;
+  font-weight: normal;
+  cursor: pointer;
+  text-decoration: none;
+}

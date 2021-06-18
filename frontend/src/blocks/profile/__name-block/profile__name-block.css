@@ -1,0 +1,15 @@
+.profile__name-block {
+  position: relative;
+  width: min-content;
+  max-width: 100%;
+  display:flex;
+  justify-content: center;
+  align-items: top;
+}
+
+@media screen and (max-width:580px) {
+  .profile__name-block {
+    max-width: calc(100% - (18px + 10px));
+    right: calc(-28px/2);
+  }
+}

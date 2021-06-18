@@ -1,0 +1,11 @@
+.popup__tooltip {
+  margin: 60px auto 42px auto;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.popup__tooltip .popup__title {
+  text-align: center;
+}
