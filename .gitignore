@@ -12,7 +12,7 @@ npm-debug.log*
 /backend/node_modules
 
 # production
-/build
+build
 
 # misc
 .env
