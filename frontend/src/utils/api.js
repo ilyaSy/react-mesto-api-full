@@ -6,12 +6,11 @@ export class Api {
     this._headers = {
       // authorization: tokenAuth,
       'Content-Type': 'application/json',
-      'credentials': 'include',
     };
   }
 
   getInitialCards() {
-    return fetch(`${this._apiURL}/cards`, { headers: this._headers }).then(
+    return fetch(`${this._apiURL}/cards`, { headers: this._headers, credentials: 'include' }).then(
       this._handleApiResult.bind(null, 'getInitialCards')
     );
   }
@@ -20,6 +19,7 @@ export class Api {
     return fetch(`${this._apiURL}/cards`, {
       method: 'POST',
       headers: this._headers,
+      credentials: 'include',
       body: JSON.stringify(cardData),
     }).then(this._handleApiResult.bind(null, 'addCard'));
   }
@@ -28,6 +28,7 @@ export class Api {
     return fetch(`${this._apiURL}/cards/likes/${cardId}`, {
       method: isLiked ? 'DELETE' : 'PUT',
       headers: this._headers,
+      credentials: 'include'
     }).then(this._handleApiResult.bind(null, 'likeCard'));
   }
 
@@ -35,6 +36,7 @@ export class Api {
     return fetch(`${this._apiURL}/cards/${cardId}`, {
       method: 'DELETE',
       headers: this._headers,
+      credentials: 'include'
     }).then(this._handleApiResult.bind(null, 'deleteCard'));
   }
 
@@ -42,12 +44,13 @@ export class Api {
     return fetch(`${this._apiURL}/users/me`, {
       method: 'PATCH',
       headers: this._headers,
+      credentials: 'include',
       body: JSON.stringify(userData),
     }).then(this._handleApiResult.bind(null, 'editUserInfo'));
   }
 
   getUserInfo() {
-    return fetch(`${this._apiURL}/users/me`, { headers: this._headers }).then(
+    return fetch(`${this._apiURL}/users/me`, { headers: this._headers, credentials: 'include' }).then(
       this._handleApiResult.bind(null, 'getUserInfo')
     );
   }
@@ -56,6 +59,7 @@ export class Api {
     return fetch(`${this._apiURL}/users/me/avatar`, {
       method: 'PATCH',
       headers: this._headers,
+      credentials: 'include',
       body: JSON.stringify(avatar),
     }).then(this._handleApiResult.bind(null, 'setUserAvatar'));
   }
