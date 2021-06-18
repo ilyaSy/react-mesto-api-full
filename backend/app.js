@@ -18,8 +18,8 @@ const options = {
     "https://ilya.nomoredomains.club",
     "http://localhost:3000"
   ],  
-  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],  
-  preflightContinue: false,  
+  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE', 'OPTIONS'],  
+  preflightContinue: false,
   optionsSuccessStatus: 204,  
   allowedHeaders: ['Content-Type', 'origin', 'Authorization'],  
   credentials: true,
