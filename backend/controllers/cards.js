@@ -3,6 +3,8 @@ const CustomError = require('../utils/CustomError');
 
 module.exports.getCards = (req, res, next) => {
   Card.find({})
+    .populate('owner')
+    .populate('likes')
     .then((cards) => res.send(cards))
     .catch(next);
 };
