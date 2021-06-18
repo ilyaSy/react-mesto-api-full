@@ -42,9 +42,10 @@ function App() {
   }
 
   React.useEffect(() => {
-    const jwt = localStorage.getItem('jwt');
-    if (jwt){
-      auth.validateUser(jwt)
+    // const jwt = localStorage.getItem('jwt');
+    // if (jwt){
+      // auth.validateUser(jwt)
+      auth.validateUser()
         .then(res => {
           if (res.data.email) {
             setEmail(res.data.email);
@@ -53,7 +54,7 @@ function App() {
           }
         })
         .catch(err => console.error('Ошибка: ' + err))
-    }
+    // }
   }, [history]);
 
   //close on Escape button
@@ -153,13 +154,13 @@ function App() {
   const handleLogin = (userCredentials) => {
     auth.loginUser(userCredentials)
       .then(res => {
-        const jwt = res.token;
-        if (jwt){
+        // const jwt = res.token;
+        // if (jwt){
           setEmail(userCredentials.email);
-          localStorage.setItem('jwt', jwt);
+          // localStorage.setItem('jwt', jwt);
           history.push("/");
           loadData();
-        }
+        // }
       })
       .catch(err => console.error('Ошибка: ' + err))
   }

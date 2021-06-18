@@ -100,7 +100,7 @@ module.exports.getMe = (req, res, next) => {
 
   User.findById(userId)
     .orFail(new Error('NoData'))
-    .then((user) => res.send(user))
+    .then((user) => res.send({data: user}))
     .catch((err) => {
       if (err.message === 'NoData') {
         throw new CustomError(404, 'Пользователь не найден');
