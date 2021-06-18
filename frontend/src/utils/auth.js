@@ -42,7 +42,7 @@ export class Auth{
   }
 
   validateUser(jwt){
-    return fetch(`${authURL}/users/me`, {method: 'GET', headers: {...this._headers, "Authorization": `Bearer ${jwt}`}})
+    return fetch(`${authURL}/users/me`, {method: 'GET', headers: {...this._headers, credentials: 'include', "Authorization": `Bearer ${jwt}`}})
     .then(res => {
       if (res.ok) {
         return res.json()
