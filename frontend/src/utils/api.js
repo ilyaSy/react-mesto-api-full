@@ -6,6 +6,7 @@ export class Api {
     this._headers = {
       // authorization: tokenAuth,
       'Content-Type': 'application/json',
+      'credentials': 'include',
     };
   }
 
