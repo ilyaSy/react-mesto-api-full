@@ -35,7 +35,7 @@ function App() {
   const loadData = () => {
     Promise.all([api.getUserInfo(), api.getInitialCards()])
       .then(([userData, initialCards]) => {
-        setCurrentUser(userData);
+        setCurrentUser(userData.data);
         setCards(initialCards)
       })
       .catch(err => console.error('Ошибка: ' + err))
