@@ -4,6 +4,9 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 const CustomError = require('../utils/CustomError');
 
+const { NODE_ENV, JWT_SECRET_KEY } = process.env;
+const jwt_secret_key = NODE_ENV === 'production' && JWT_SECRET_KEY ? JWT_SECRET_KEY : 'dev-secret';
+
 module.exports.getUsers = (req, res, next) => {
   User.find({})
     .then((users) => res.send(users))
@@ -85,7 +88,7 @@ module.exports.login = (req, res, next) => {
         throw new CustomError(401, 'Неправильные почта или пароль');
       }
 
-      const token = jwt.sign({ _id: userId }, 'some-secret-key', { expiresIn: '7d' });
+      const token = jwt.sign({ _id: userId }, jwt_secret_key, { expiresIn: '7d' });
 
       res.cookie('jwt', token, { maxAge: 1000 * 60 * 60 * 24 * 7, httpOnly: true }).end();
     })
