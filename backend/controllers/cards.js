@@ -14,7 +14,9 @@ module.exports.deleteCard = (req, res, next) => {
   const userId = req.user._id;
 
   Card.findById(cardId)
-    .orFail(() => { throw Error('NoData'); })
+    .orFail(() => {
+      throw Error('NoData');
+    })
     .then((card) => {
       if (card.owner.toString() !== userId) {
         throw Error('BadRules');
@@ -47,7 +49,8 @@ module.exports.createCard = (req, res, next) => {
   const userId = req.user._id;
 
   Card.create({ name, link, owner: userId })
-    .then((card) => {
+    .then((cardCreated) => {
+      const card = cardCreated;
       card.owner = req.user;
       return res.send(card);
     })

@@ -5,7 +5,7 @@ const User = require('../models/user');
 const CustomError = require('../utils/CustomError');
 
 const { NODE_ENV, JWT_SECRET_KEY } = process.env;
-const jwt_secret_key = NODE_ENV === 'production' && JWT_SECRET_KEY ? JWT_SECRET_KEY : 'dev-secret';
+const jwSecretKey = NODE_ENV === 'production' && JWT_SECRET_KEY ? JWT_SECRET_KEY : 'dev-secret';
 
 module.exports.getUsers = (req, res, next) => {
   User.find({})
@@ -60,12 +60,14 @@ module.exports.createUser = (req, res, next) => {
         throw new CustomError(500, 'На сервере произошла ошибка');
       }
     }))
-    .then((user) => res.send({data: {
-      name: user.name,
-      about: user.about,
-      avatar: user.avatar,
-      email: user.email,
-    }}))
+    .then((user) => res.send({
+      data: {
+        name: user.name,
+        about: user.about,
+        avatar: user.avatar,
+        email: user.email,
+      },
+    }))
     .catch(next);
 };
 
@@ -88,9 +90,9 @@ module.exports.login = (req, res, next) => {
         throw new CustomError(401, 'Неправильные почта или пароль');
       }
 
-      const token = jwt.sign({ _id: userId }, jwt_secret_key, { expiresIn: '7d' });
+      const token = jwt.sign({ _id: userId }, jwSecretKey, { expiresIn: '7d' });
 
-      res.cookie('jwt', token, { maxAge: 1000 * 60 * 60 * 24 * 7, httpOnly: true }).send({login: 'success'});
+      res.cookie('jwt', token, { maxAge: 1000 * 60 * 60 * 24 * 7, httpOnly: true }).send({ login: 'success' });
     })
     .catch(next);
 };
@@ -100,7 +102,7 @@ module.exports.getMe = (req, res, next) => {
 
   User.findById(userId)
     .orFail(new Error('NoData'))
-    .then((user) => res.send({data: user}))
+    .then((user) => res.send({ data: user }))
     .catch((err) => {
       if (err.message === 'NoData') {
         throw new CustomError(404, 'Пользователь не найден');

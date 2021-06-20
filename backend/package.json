@@ -7,12 +7,8 @@
     "start": "react-scripts start",
     "dev": "nodemon app.js",
     "test": "react-scripts test",
-    "lint": "npx eslint ./backend"
+    "lint": "npx eslint ."
   },
-  "workspaces": [
-    "backend/*",
-    "frontend/*"
-  ],
   "main": "./frontend/src/index.js",
   "eslintConfig": {
     "extends": [
