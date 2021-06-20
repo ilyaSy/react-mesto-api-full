@@ -155,12 +155,12 @@ function App() {
     auth.loginUser(userCredentials)
       .then(res => {
         // const jwt = res.token;
-        // if (jwt){
+        if (res.login === 'success'){
           setEmail(userCredentials.email);
           // localStorage.setItem('jwt', jwt);
           history.push("/");
           loadData();
-        // }
+        }
       })
       .catch(err => console.error('Ошибка: ' + err))
   }

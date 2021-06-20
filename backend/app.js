@@ -11,6 +11,7 @@ const { createUser, login } = require('./controllers/users');
 const auth = require('./middlewares/auth');
 const CustomError = require('./utils/CustomError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+const { errorParser } = require('./middlewares/errorParser');
 
 const options = {  
   origin: [
@@ -77,11 +78,4 @@ app.use(errorLogger);
 
 app.use(errors());
 
-app.use((err, req, res, next) => {
-  const { statusCode = 500, message } = err;
-
-  res.status(statusCode).send({
-    message: statusCode === 500 ? 'На сервере произошла ошибка' : message,
-  });
-  next();
-});
+app.use(errorParser);
