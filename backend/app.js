@@ -43,9 +43,8 @@ const limiter = rateLimit({
   max: 100,
 });
 
-app.use(limiter);
-
 app.use('*', cors(options));
+app.use(limiter);
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(requestLogger);
