@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
-const helmet = require('helmet');
 const rateLimit = require("express-rate-limit");
 const { errors, celebrate, Joi } = require('celebrate');
 const usersRoutes = require('./routes/users');
@@ -47,7 +46,6 @@ const limiter = rateLimit({
 app.use(limiter);
 
 app.use('*', cors(options));
-app.use(helmet());
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(requestLogger);
