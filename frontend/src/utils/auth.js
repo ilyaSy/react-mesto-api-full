@@ -25,8 +25,7 @@ export class Auth{
     return fetch(`${authURL}/signin`, {method: 'POST', headers: this._headers, credentials: 'include', body: JSON.stringify(userData)})
       .then(res => {
         if (res.ok) {
-          // return res.json()
-          return true;
+          return res.json();
         }
         else {
           if (res.status === 400) {
