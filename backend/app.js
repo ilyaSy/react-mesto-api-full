@@ -44,10 +44,10 @@ const limiter = rateLimit({
 });
 
 app.use('*', cors(options));
+app.use(requestLogger);
 app.use(limiter);
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.use(requestLogger);
 
 app.get('/crash-test', () => {
   setTimeout(() => {
